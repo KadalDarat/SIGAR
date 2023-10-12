@@ -32,8 +32,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/SIGAR_1.js"></script>
-        <script src="data/BATASSIGAR_2.js"></script>
+        <script src="data/BATASSIGAR_1.js"></script>
+        <script src="data/SIGAR_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -61,7 +61,39 @@
         });
         layer_GoogleSatellite_0;
         map.addLayer(layer_GoogleSatellite_0);
-        function pop_SIGAR_1(feature, layer) {
+        function pop_BATASSIGAR_1(feature, layer) {
+        }
+
+        function style_BATASSIGAR_1_0() {
+            return {
+                pane: 'pane_BATASSIGAR_1',
+                opacity: 1,
+                color: 'rgba(251,255,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 6.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,72,75,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BATASSIGAR_1');
+        map.getPane('pane_BATASSIGAR_1').style.zIndex = 401;
+        map.getPane('pane_BATASSIGAR_1').style['mix-blend-mode'] = 'normal';
+        var layer_BATASSIGAR_1 = new L.geoJson(json_BATASSIGAR_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BATASSIGAR_1',
+            layerName: 'layer_BATASSIGAR_1',
+            pane: 'pane_BATASSIGAR_1',
+            onEachFeature: pop_BATASSIGAR_1,
+            style: style_BATASSIGAR_1_0,
+        });
+        bounds_group.addLayer(layer_BATASSIGAR_1);
+        map.addLayer(layer_BATASSIGAR_1);
+        function pop_SIGAR_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">KECAMATAN</th>\
@@ -107,11 +139,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_SIGAR_1_0(feature) {
+        function style_SIGAR_2_0(feature) {
             switch(String(feature.properties['STATUS'])) {
                 case 'BIDANG_K3':
                     return {
-                pane: 'pane_SIGAR_1',
+                pane: 'pane_SIGAR_2',
                 opacity: 1,
                 color: 'rgba(48,228,48,1.0)',
                 dashArray: '',
@@ -126,7 +158,7 @@
                     break;
                 case 'BIDANG_SERTIPIKAT':
                     return {
-                pane: 'pane_SIGAR_1',
+                pane: 'pane_SIGAR_2',
                 opacity: 1,
                 color: 'rgba(210,0,203,1.0)',
                 dashArray: '',
@@ -141,57 +173,25 @@
                     break;
             }
         }
-        map.createPane('pane_SIGAR_1');
-        map.getPane('pane_SIGAR_1').style.zIndex = 401;
-        map.getPane('pane_SIGAR_1').style['mix-blend-mode'] = 'normal';
-        var layer_SIGAR_1 = new L.geoJson(json_SIGAR_1, {
+        map.createPane('pane_SIGAR_2');
+        map.getPane('pane_SIGAR_2').style.zIndex = 402;
+        map.getPane('pane_SIGAR_2').style['mix-blend-mode'] = 'normal';
+        var layer_SIGAR_2 = new L.geoJson(json_SIGAR_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SIGAR_1',
-            layerName: 'layer_SIGAR_1',
-            pane: 'pane_SIGAR_1',
-            onEachFeature: pop_SIGAR_1,
-            style: style_SIGAR_1_0,
+            dataVar: 'json_SIGAR_2',
+            layerName: 'layer_SIGAR_2',
+            pane: 'pane_SIGAR_2',
+            onEachFeature: pop_SIGAR_2,
+            style: style_SIGAR_2_0,
         });
-        bounds_group.addLayer(layer_SIGAR_1);
-        map.addLayer(layer_SIGAR_1);
-        function pop_BATASSIGAR_2(feature, layer) {
-        }
-
-        function style_BATASSIGAR_2_0() {
-            return {
-                pane: 'pane_BATASSIGAR_2',
-                opacity: 1,
-                color: 'rgba(251,255,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 6.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(183,72,75,0.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_BATASSIGAR_2');
-        map.getPane('pane_BATASSIGAR_2').style.zIndex = 402;
-        map.getPane('pane_BATASSIGAR_2').style['mix-blend-mode'] = 'normal';
-        var layer_BATASSIGAR_2 = new L.geoJson(json_BATASSIGAR_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_BATASSIGAR_2',
-            layerName: 'layer_BATASSIGAR_2',
-            pane: 'pane_BATASSIGAR_2',
-            onEachFeature: pop_BATASSIGAR_2,
-            style: style_BATASSIGAR_2_0,
-        });
-        bounds_group.addLayer(layer_BATASSIGAR_2);
-        map.addLayer(layer_BATASSIGAR_2);
+        bounds_group.addLayer(layer_SIGAR_2);
+        map.addLayer(layer_SIGAR_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/BATASSIGAR_2.png" /> BATAS SIGAR': layer_BATASSIGAR_2,'SIGAR<br /><table><tr><td style="text-align: center;"><img src="legend/SIGAR_1_BIDANGK30.png" /></td><td>BIDANG_K3</td></tr><tr><td style="text-align: center;"><img src="legend/SIGAR_1_BIDANGSERTIPIKAT1.png" /></td><td>BIDANG_SERTIPIKAT</td></tr></table>': layer_SIGAR_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'SIGAR<br /><table><tr><td style="text-align: center;"><img src="legend/SIGAR_2_BIDANGK30.png" /></td><td>BIDANG_K3</td></tr><tr><td style="text-align: center;"><img src="legend/SIGAR_2_BIDANGSERTIPIKAT1.png" /></td><td>BIDANG_SERTIPIKAT</td></tr></table>': layer_SIGAR_2,'<img src="legend/BATASSIGAR_1.png" /> BATAS SIGAR': layer_BATASSIGAR_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
-            layer: layer_SIGAR_1,
+            layer: layer_SIGAR_2,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'NIB'}));
